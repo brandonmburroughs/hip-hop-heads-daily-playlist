@@ -35,6 +35,7 @@ body {
     border-radius: 0;
     color: #fff;
     background-color: rgba(0,0,0,0.4);
+    margin: 8px;
 }
 
 .btn-dark:hover,
@@ -42,7 +43,6 @@ body {
 .btn-dark:active {
     color: #fff;
     background-color: rgba(0,0,0,0.7);
-    margin: 8px;
 }
 
 .btn-light {
