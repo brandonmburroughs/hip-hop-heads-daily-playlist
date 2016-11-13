@@ -42,29 +42,47 @@
     <section id="playlist" class="playlist">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-vertical-center">
-                    <br>
+                <div class="col-sm-offset-0 col-sm-12 col-xs-offset-1 col-xs-10 text-vertical-center">
                     <h1>Today's Playlist</h1>
                     <br>
                     <div class="embed-responsive embed-responsive-16by9">
-                        <iframe id="embeddedPlaylist" class="embed-responsive-item" src="https://www.youtube.com/embed/videoseries?list=PLWPHd6WhQACY0ZDZmnSqiFVM74uJQ9_VG" allowfullscreen></iframe>
+                        <iframe id="embeddedPlaylist" class="embed-responsive-item" src="https://www.youtube.com/embed/videoseries?list=PLWPHd6WhQACY0ZDZmnSqiFVM74uJQ9_VG" allowfullscreen alt="Hip Hop Heads Daily Playlist"></iframe>
                     </div>
-                     <br>
-                    <a href="https://www.youtube.com/channel/UCzSMHsDe2J6TAMsVYtWFQIQ" target="_blank" class="btn btn-dark btn-lg">Previous Playlists</a>
-                    <br><br>
-                    <a href="http://reddit.com/r/hiphopheads" target="_blank" class="btn btn-dark btn-lg">/r/hiphopheads</a>
-                    <br><br>
-                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                    <br>
+                </div>
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-sm-offset-1 col-sm-10 col-xs-offset-2 col-xs-8 text-vertical-center" id="buttons">
+                    <!-- Link to /r/hiphopheads -->
+                    <a href="http://reddit.com/r/hiphopheads" target="_blank" class="btn btn-dark btn-lg" style="display: inline-block">/r/hiphopheads</a>
+                    <!-- Link to previous playlists -->
+                    <a href="https://www.youtube.com/channel/UCPWacfiP5B4PueH24hJ6lvw" target="_blank" class="btn btn-dark btn-lg" style="display: inline-block">Previous Playlists</a>
+                    <!-- Paypal donation button -->
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="display: inline-block">
                         <input type="hidden" name="cmd" value="_donations">
-                        <input type="hidden" name="business" value="brandonmburroughs@gmail.com">
+                        <input type="hidden" name="business" value="hiphopheadsdaily@gmail.com">
                         <input type="hidden" name="lc" value="US">
                         <input type="hidden" name="item_name" value="Hip Hop Heads Daily Playlist">
                         <input type="hidden" name="no_note" value="0">
                         <input type="hidden" name="currency_code" value="USD">
                         <input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_LG.gif:NonHostedGuest">
-                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                        <input class="btn btn-dark btn-lg" type="submit" value="Donate" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
                     </form>
+                    <br>
+                    <!-- How this gets created dropdown -->
+                    <div class="dropdown">
+                        <button class="btn btn-dark btn-lg dropdown-toggle" type="button" id="menu1" data-toggle="dropdown" style="white-space: normal;">How does this playlist get created?
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="#" style="white-space: normal; text-align: center;">Every thirty minutes, the top 50 posts in /r/hiphopheads are scanned for YouTube videos. New videos are added to the day's playlist. A new playlist is created every day at midnight Eastern time.</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+                <!-- /buttons -->
             </div>
             <!-- /.row -->
         </div>
@@ -76,7 +94,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 col-lg-offset-1 text-center">
-
+                    <a href="mailto:hiphopheadsdaily@gmail.com" target="_blank">Report a problem</a>
                 </div>
             </div>
         </div>
@@ -92,7 +110,7 @@
     <!-- Custom Theme JavaScript -->
     <script>
     // Get most recent playlist
-    $.getJSON("https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UCzSMHsDe2J6TAMsVYtWFQIQ&max-result=1&key=AIzaSyDdKjuO7wVSzOPoLuftyebEVuwgcDdpmN8", 
+    $.getJSON("https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UCPWacfiP5B4PueH24hJ6lvw&max-result=1&key=AIzaSyDMe2Zh41i6Tf19nTJrifaGQXeXHAeXibE", 
         function(data, status, xhr) {
             var latestPlaylist = "https://www.youtube.com/embed/videoseries?list=" + data['items'][0]['id'];
             $("#embeddedPlaylist").attr("src", latestPlaylist);
@@ -141,6 +159,7 @@
         }
     });
 
+    // Google Analytics
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
